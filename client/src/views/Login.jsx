@@ -28,7 +28,7 @@ class Login extends Component {
   componentWillMount() {
     const { history } = this.props;
     if (sessionStorage.getItem("accessToken")) {
-      history.push("/dashboard");
+      history.push("/categories");
     }
   }
   login() {
@@ -37,17 +37,17 @@ class Login extends Component {
   render() {
     return (
       <div className="app flex-row align-items-center">
-        <Container>
+        <Container className="centered">
           <Row className="justify-content-center">
-            <Col md="6">
+            <Col xs={6} sm={6} md={6}>
               <CardGroup>
                 <Card className="p-4">
                   <CardBody>
                     <Form>
                       <FormGroup>
                         <Row>
-                          <Col xs={6} sm={6} md={6}>
-                            <h1>Login</h1>
+                          <Col xs={12} sm={12} md={6}>
+                            <h3>Login</h3>
                             <p className="text-muted">
                               Sign In to your account
                             </p>
@@ -93,7 +93,7 @@ class Login extends Component {
                         />
                       </InputGroup>
                       <Row>
-                        <Col xs="6">
+                        <Col xs={12} sm={12} md={6}>
                           <Button
                             color="primary"
                             className="px-4"
@@ -104,7 +104,7 @@ class Login extends Component {
                             Login
                           </Button>
                         </Col>
-                        <Col xs="6" className="text-right">
+                        <Col xs={12} sm={12} md={6} className="text-right">
                           <Button color="link" className="px-0">
                             Forgot password?
                           </Button>

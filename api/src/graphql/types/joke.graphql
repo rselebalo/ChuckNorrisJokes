@@ -8,6 +8,6 @@ type Joke {
 }
 
 type Query {
-  jokes: [Joke!]!
+  jokes: [Joke]
   joke(category: String!): Joke!
 }

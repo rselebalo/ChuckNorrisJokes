@@ -3,6 +3,6 @@ type Category {
 }
 
 type Query {
-    categories: [Category!]!
+    categories: [String!]!
     category(id: String!): Category!
 }

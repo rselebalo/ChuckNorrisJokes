@@ -70,7 +70,7 @@ class Auth {
               "role",
               profile["https://rethabile:auth0:com/roles"]
             );
-            history.push("/");
+            history.push("/categories");
           });
         }
       }
@@ -86,7 +86,7 @@ class Auth {
         }
         this.setSession(authResult);
         this.setProfile(authResult.accessToken);
-        history.push("/");
+        history.push("/categories");
         resolve();
       });
     });
@@ -107,7 +107,7 @@ class Auth {
     sessionStorage.removeItem("accessToken");
     sessionStorage.removeItem("expiresAt");
     sessionStorage.removeItem("profile");
-    history.push("/login");
+    history.push("/");
   }
   silentAuth() {
     return new Promise((resolve, reject) => {

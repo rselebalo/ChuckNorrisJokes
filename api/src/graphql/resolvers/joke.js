@@ -5,12 +5,8 @@ export default {
       // to query arguments
       const { category } = args;
 
-      const result = dataSources.jokeSource([category]);
-      if (result && result[0]) {
-        return result[0];
-      }
-
-      return null;
+      return dataSources.jokeSource([category]);
+      
     },
     jokes: async (source, args, { dataSources }, state) => {
       return dataSources.jokeSource(null);

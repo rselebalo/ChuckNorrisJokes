@@ -6,22 +6,24 @@ import history from "./history";
 import "../styles/App.css";
 import dotenv from "dotenv";
 
+// Pages
+import Callback from "../components/Auth/Callback";
+import Login  from "../views/Login";
+import Categories from "../components/Categories";
+import Joke from "../components/Joke";
+
 dotenv.config();
 
 const loading = () => (
   <div className="animated fadeIn pt-3 text-center">Loading...</div>
 );
 
-// Pages
-const Callback = React.lazy(() => import("../components/Auth/Callback"));
-const Login = React.lazy(() => import("../views/Login"));
-const Categories = React.lazy(() => import("../views/Login"));
 
 class App extends Component {
   async componentDidMount() {
     try {
       if (!auth0Client.getIdToken()) {
-        history.push("/");
+        history.push("/categories");
       }
       await auth0Client.silentAuth();
       this.forceUpdate();
@@ -36,20 +38,25 @@ class App extends Component {
           <Switch>
             <Route
               exact
-              path="/login"
+              path="/"
               name="Login Page"
-              render={props => <Login {...props} />}
+              component={Login}
             />
             <Route
-              path="/"
-              name="Home"
-              render={props => <Categories {...props} />}
+              path="/categories"
+              name="Categories"
+              component={Categories}
+            />
+            <Route
+              path="/joke/:category"
+              name="joke"
+              component={Joke}
             />
             <Route
               exact
               path="/callback"
               name="Callback Page"
-              render={props => <Callback {...props} />}
+              component={Callback}
             />
           </Switch>
         </React.Suspense>

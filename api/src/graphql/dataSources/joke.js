@@ -6,12 +6,20 @@ export default async category => {
       url: `https://api.chucknorris.io/jokes/random?category=${category}`,
       method: "GET"
     });
-    return result.data.json();
+   
+    // return {
+    //   id: result.data.id,
+    //   value: result.data.value,
+    //   url: result.data.url,
+    //   created_at: result.data.json().created_at,
+    //   icon_url: result.data.json().icon_url,
+    //   categories: result.data.json().categories,
+    // };
+    return result.data;
   } catch (e) {
-    console.log(e);
     return {
       id: "error",
-      value: "error",
+      value: e.message,
       url: "error"
     };
   }

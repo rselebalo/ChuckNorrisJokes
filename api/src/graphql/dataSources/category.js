@@ -7,10 +7,11 @@ export default async () => {
       method: "GET"
     });
 
-    return result.data.json();
-  } catch {
-    return {
-      value: "error"
-    };
+    const categories = [];
+    result.data.map(c => categories.push(c));
+    
+    return categories;
+  } catch(error) {
+    return [error.message];
   }
 };
